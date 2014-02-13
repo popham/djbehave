@@ -1,6 +1,6 @@
 from django.test.runner import DiscoverRunner
 from optparse import make_option
-from subbehave.unittest.runner import PyunitRunner
+from subbehave.unittest import PyunitConsumer
 
 from .loader import BehaveLoader
 
@@ -28,7 +28,8 @@ class BehaveRunner(DiscoverRunner):
         )
 
     def run_suite(self, suite, **kwargs):
-        return PyunitRunner(
+        """Override the typical runner with an instance of `PyunitConsumer`."""
+        return PyunitConsumer(
             verbosity=self.verbosity,
             failfast=self.failfast,
         ).run(suite)
