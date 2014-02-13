@@ -45,7 +45,7 @@ def before_tag(context, tag):
         CreateTestServer().trigger(context.config)
 ```
 
-Contrary to earlier, availability of the corresponding resource gets limited to the tagged scopes.
+In the absence of the `before_all` hook from earlier, availability of the corresponding resource gets limited to the tagged scopes.
 Consider the following Gherkin:
 
 ```
@@ -58,7 +58,7 @@ Feature: Active Oauth User Interaction
 ```
 
 My `Inactive Oauth User Interaction` feature, its scenarios, and their steps all have access to the test server resource.
-The non-tagged feature, `Active Oauth User Interaction`, however, has no such access.
+The non-tagged `Active Oauth User Interaction` feature, however, has no such access.
 
 ## Deficiencies
   * I have not built any tests for this code.
