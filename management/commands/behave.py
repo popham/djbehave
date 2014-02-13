@@ -8,6 +8,14 @@ from django.core.management.base import BaseCommand
 from django.utils.encoding import force_str
 
 def get_runner(settings, test_runner_class=None):
+    """
+    Provide an instance of test_runner_class if provided, otherwise use the
+    runner from the settings module.
+
+    :param test_runner_class: Optional string prescribing the runner to user
+    (dotted module syntax resolvable from the path).
+    :returns: `TestRunner` class.
+    """
     if not test_runner_class:
         test_runner_class = settings.BEHAVE_RUNNER
 
@@ -18,6 +26,15 @@ def get_runner(settings, test_runner_class=None):
     return test_runner
 
 class Command(BaseCommand):
+
+    """
+    Replicate Behave's CLI in Django's manage.py framework.
+
+    Imitate the implementation from Django's core.management.command.test
+    implementation, but reparametrized for `BehaveRunner`.
+
+    """
+
     option_list = BaseCommand.option_list + (
         make_option('--failfast',
             action='store_true', dest='failfast', default=False,

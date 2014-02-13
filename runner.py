@@ -5,6 +5,18 @@ from subbehave.unittest import PyunitRunner
 from .loader import BehaveLoader
 
 class BehaveRunner(DiscoverRunner):
+
+    """
+    `BehaveRunner` runs `Behave` on features from a `features` subdirectory.
+
+    This implementation overrides the `Runner` and `Loader` used by
+    `DiscoverRunner` with custom versions from the `subbehave` module. Further,
+    the `unittest` default `test*.py` pattern has been overridden with
+    `features`. Since the new pattern matches on directories instead of files,
+    loading has been greatly simplified.
+
+    """
+
     test_loader = BehaveLoader()
     option_list = (
         make_option('-t', '--top-level-directory',

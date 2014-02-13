@@ -6,9 +6,21 @@ from unittest.suite import TestSuite
 from subbehave.unittest import BehaveSuite
 
 class BehaveLoader(TestLoader):
+
+    """
+    Load features from a `features` directory, unless an alternate match pattern
+    has been provided.
+
+    The loader uses the `TestSuite` class from unittest. This suite wraps a
+    single `BehaveSuite` instance. The `BehaveSuite` instance was not intended
+    to provide its tests to another suite, requiring the extra wrapper.
+
+    """
+
     suiteClass = TestSuite
 
     def discover(self, start_dir, pattern='features', top_level_dir=None):
+        # Override pattern from the function's signature.
         return super().discover(start_dir, pattern, top_level_dir)
 
     def _find_tests(self, start_dir, pattern):
