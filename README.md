@@ -63,7 +63,7 @@ The non-tagged `Active Oauth User Interaction` feature, however, has no such acc
 
 ## Deficiencies
   * I have not built any tests for this code.
-  * I have not propogated command line settings into the Behave process.  I will get around to this in parallel with tests.
+  * *I have not propogated command line settings into the Behave process.*  I will get around to this in parallel with tests.
   * I operate under Python 3.3.
     - I've used `super()` all over the place, so Python 3.2 and below will not function properly without slight revision (in the time it took to type this, I could have been well on my way).
     - I've imported directly from Unittest in a couple of spots, so earlier versions may not work.
