@@ -22,7 +22,7 @@ def before_tag(context, tag):
 ```
 
 The `before_all` hook provides the test server resource for all tests to access.
-Consider the following Gherkin:
+Consider the following [Gherkin](https://github.com/cucumber/cucumber/wiki/Gherkin):
 
 ```
 Feature: Inactive Oauth User Interaction
@@ -46,7 +46,7 @@ def before_tag(context, tag):
 ```
 
 Contrary to earlier, availability of the corresponding resource gets limited to the tagged scopes.
-Consider the following [Gherkin](https://github.com/cucumber/cucumber/wiki/Gherkin):
+Consider the following Gherkin:
 
 ```
 @server
