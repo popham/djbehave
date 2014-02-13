@@ -21,7 +21,8 @@ def before_tag(context, tag):
         LoadFixtures('user/oauth').trigger(context.config)
 ```
 
-Behave executes tag hooks in the order that they're encountered, so under the above hooks I can flush the database and load `user/oauth` fixtures with the following Gherkin:
+The `before_all` hook provides the test server resource for all tests to access.
+Consider the following Gherkin:
 
 ```
 Feature: Inactive Oauth User Interaction
@@ -30,7 +31,8 @@ Feature: Inactive Oauth User Interaction
   Scenario: ...
 ```
 
-The created test server is torn down automatically when all tests have run.
+Before the scenario runs, the test database gets flushed and then the `user/oauth` fixture gets loaded.
+Behave executes tag hooks in the order that they're encountered, so the database gets flushed before the fixtures are loaded.
 
 ## Resource Destruction
 The command `CreateTestServer` builds a resource that is available until its scope closes.
@@ -43,8 +45,8 @@ def before_tag(context, tag):
         CreateTestServer().trigger(context.config)
 ```
 
-Contrary to earlier, availability of the corresponding resource, a test server in this case, is limited to tagged scopes.
-Consider the following Gherkin:
+Contrary to earlier, availability of the corresponding resource gets limited to the tagged scopes.
+Consider the following [Gherkin](https://github.com/cucumber/cucumber/wiki/Gherkin):
 
 ```
 @server
