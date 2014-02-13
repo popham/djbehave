@@ -20,7 +20,9 @@ class BehaveLoader(TestLoader):
     suiteClass = TestSuite
 
     def discover(self, start_dir, pattern='features', top_level_dir=None):
-        # Override pattern from the function's signature.
+        """
+        Override the default pattern of the method's signature with 'features'
+        """
         return super().discover(start_dir, pattern, top_level_dir)
 
     def _find_tests(self, start_dir, pattern):
