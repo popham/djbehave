@@ -46,7 +46,7 @@ def before_tag(context, tag):
         CreateTestServer().trigger(context.config)
 ```
 
-In the absence of the `before_all` hook from earlier, availability of the corresponding resource gets limited to the tagged scopes.
+In the absence of the `before_all` hook from earlier, availability of the corresponding resource gets set up and torn down for each of the tagged scopes.
 Consider the following Gherkin:
 
 ```
