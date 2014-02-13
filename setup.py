@@ -2,6 +2,8 @@ import os
 import pypandoc
 from setuptools import find_packages, setup
 
+version = '0.0.1.0'
+
 description = """
 Djbehave exposes`Behave <http://pythonhosted.org/behave/>`_ for use under `Django <https://www.djangoproject.com/>`_.
 It provides a `manage.py behave` analogue to Django's `manage.py test` command, maintaining the feel of Django's unittest interface.
@@ -10,15 +12,15 @@ It provides a `manage.py behave` analogue to Django's `manage.py test` command, 
 setup(
     name="djbehave",
     description="Integration of Behave into Django's command line interface.",
-    version=VERSION,
+    version="v%s" % version,
     author="Tim Popham",
     author_email="popham@uw.edu",
     url="https://github.com/popham/djbehave",
-    download_url="https://github.com/popham/djbehave/archive/master.tar.gz",
+    download_url="https://github.com/popham/djbehave/archive/v%s.tar.gz" % version,
     packages=['djbehave']
     install_requires=[
         'django>=1.4.1',
-        'subbehave=0.0.1.0',
+        'subbehave=%s' % version,
         'behave>=1.2.3'],
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
