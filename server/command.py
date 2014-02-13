@@ -1,9 +1,9 @@
-from subbehave.command import Command, Complete, Resource
+from subbehave.command import Command, Complete, InjectResource
 
 from .base import Db
 from .resource import TestServer
 
-class CreateTestServer(Resource):
+class CreateTestServer(InjectResource):
 
     """
     Injects a test server into a `BehaveSuite` instance.
@@ -11,7 +11,7 @@ class CreateTestServer(Resource):
     """
 
     def __call__(self, return_queue, owner):
-        """Implements the `Resource` protocol."""
+        """Implements the `InjectResource` protocol."""
         ts = TestServer()
         owner.attachResource(ts)
         self.vacuous_return(return_queue)
