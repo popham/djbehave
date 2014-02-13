@@ -16,11 +16,12 @@ setup(
     author_email="popham@uw.edu",
     url="https://github.com/popham/djbehave",
     download_url="https://github.com/popham/djbehave/archive/v%s.tar.gz" % version,
-    packages=['djbehave'],
+    packages=find_packages('djbehave'),
     install_requires=[
         'django>=1.4.1',
         'subbehave==%s' % version,
         'behave>=1.2.3'],
+    license="MIT",
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Framework :: Django',
