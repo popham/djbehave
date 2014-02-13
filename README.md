@@ -1,6 +1,6 @@
 # Djbehave
 
-Djbehave exposes Behave for use under Django.
+Djbehave exposes [Behave](http://pythonhosted.org/behave/) for use under [Django](https://www.djangoproject.com/).
 It provides a `manage.py behave` analogue to Django's `manage.py test` command, maintaining the feel of Django's unittest interface.
 
 The system's architecture exposes the [test database](https://docs.djangoproject.com/en/1.6/topics/testing/overview/#the-test-database) and a [test server](https://docs.djangoproject.com/en/1.6/topics/testing/tools/#liveservertestcase) for manipulation from Behave.
