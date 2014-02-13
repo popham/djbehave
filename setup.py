@@ -1,5 +1,4 @@
 import os
-import pypandoc
 from setuptools import find_packages, setup
 
 version = '0.0.1.0'
@@ -17,10 +16,10 @@ setup(
     author_email="popham@uw.edu",
     url="https://github.com/popham/djbehave",
     download_url="https://github.com/popham/djbehave/archive/v%s.tar.gz" % version,
-    packages=['djbehave']
+    packages=['djbehave'],
     install_requires=[
         'django>=1.4.1',
-        'subbehave=%s' % version,
+        'subbehave==%s' % version,
         'behave>=1.2.3'],
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
