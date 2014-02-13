@@ -3,6 +3,7 @@
 Djbehave exposes [Behave](http://pythonhosted.org/behave/) for use under [Django](https://www.djangoproject.com/).
 It provides a `manage.py behave` analogue to Django's `manage.py test` command, maintaining the feel of Django's unittest interface.
 
+## Typical Use
 The system's architecture exposes the [test database](https://docs.djangoproject.com/en/1.6/topics/testing/overview/#the-test-database) and a [test server](https://docs.djangoproject.com/en/1.6/topics/testing/tools/#liveservertestcase) for manipulation from Behave.
 The architecture should support additional resources, whatever they may be.
 My projects currently use hooks from Behave to start a test server and alter the state of my test database, e.g.
@@ -20,7 +21,44 @@ def before_tag(context, tag):
         LoadFixtures('user/oauth').trigger(context.config)
 ```
 
-Deficiencies:
+Behave executes tag hooks in the order that they're encountered, so under the above hooks I can flush the database and load `user/oauth` fixtures with the following Gherkin:
+
+```
+Feature: Inactive Oauth User Interaction
+  @flush
+  @oauth_fixtures
+  Scenario: ...
+```
+
+The created test server is torn down automatically when all tests have run.
+
+## Resource Destruction
+The command `CreateTestServer` builds a resource that is available until its scope closes.
+In the earlier example, the resource was created under the `before_all` hook, giving it global scope and, therefore, making it available to all tests.
+Consider the tag hook:
+
+```python
+def before_tag(context, tag):
+    if tag == 'server':
+        CreateTestServer().trigger(context.config)
+```
+
+Contrary to earlier, availability of the corresponding resource, a test server in this case, is limited to tagged scopes.
+Consider the following Gherkin:
+
+```
+@server
+Feature: Inactive Oauth User Interaction
+  Scenario: ...
+
+Feature: Active Oauth User Interaction
+  Scenario: ...
+```
+
+My `Inactive Oauth User Interaction` feature, its scenarios, and their steps all have access to the test server resource.
+The non-tagged feature, `Active Oauth User Interaction`, however, has no such access.
+
+## Deficiencies
   * I have not built any tests for this code.
   * I have not propogated command line settings into the Behave process.  I will get around to this in parallel with tests.
   * I operate under Python 3.3.
