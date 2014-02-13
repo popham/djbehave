@@ -1,6 +1,6 @@
 from django.test.runner import DiscoverRunner
 from optparse import make_option
-from subbehave.unittest import PyunitRunner
+from subbehave.unittest.runner import PyunitRunner
 
 from .loader import BehaveLoader
 

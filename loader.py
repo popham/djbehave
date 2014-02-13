@@ -3,7 +3,7 @@ from fnmatch import fnmatch
 from unittest.loader import TestLoader, _make_failed_load_tests
 from unittest.suite import TestSuite
 
-from subbehave.unittest import BehaveSuite
+from subbehave.unittest.suite import BehaveSuite
 
 class BehaveLoader(TestLoader):
 
