@@ -16,7 +16,7 @@ setup(
     author_email="popham@uw.edu",
     url="https://github.com/popham/djbehave",
     download_url="https://github.com/popham/djbehave/archive/v%s.tar.gz" % version,
-    packages=find_packages('djbehave'),
+    packages=map(lambda c: 'djbehave.' + c, setuptools.find_packages('djbehave')),
     install_requires=[
         'django>=1.4.1',
         'subbehave==%s' % version,
