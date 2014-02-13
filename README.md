@@ -7,16 +7,18 @@ The system's architecture exposes the [test database](https://docs.djangoproject
 The architecture should support additional resources, whatever they may be.
 My projects currently use hooks from Behave to start a test server and alter the state of my test database, e.g.
 
-    from djbehave.server.command import CreateTestServer, Flush, LoadFixtures
+```python
+from djbehave.server.command import CreateTestServer, Flush, LoadFixtures
 
-    def before_all(context):
-        CreateTestServer().trigger(context.config)
+def before_all(context):
+    CreateTestServer().trigger(context.config)
 
-    def before_tag(context, tag):
-        if tag == 'flush':
-            Flush().trigger(context.config)
-        if tag == 'oauth_fixtures':
-            LoadFixtures('user/oauth').trigger(context.config)
+def before_tag(context, tag):
+    if tag == 'flush':
+        Flush().trigger(context.config)
+    if tag == 'oauth_fixtures':
+        LoadFixtures('user/oauth').trigger(context.config)
+```
 
 Deficiencies:
   * I have not built any tests for this code.
