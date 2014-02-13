@@ -1,7 +1,7 @@
 # Djbehave
 
 Djbehave exposes [Behave](http://pythonhosted.org/behave/) for use under [Django](https://www.djangoproject.com/).
-It provides a `manage.py behave` analogue to Django's `manage.py test` command, maintaining the feel of Django's unittest interface.
+It provides a `manage.py behave` analogue to Django's `manage.py test` command (**command line switches have not been propogated through to configure Behave, so only the default works right now**), maintaining the feel of Django's unittest interface.
 Djbehave requires [Subbehave](https://github.com/popham/subbehave).
 
 ## Typical Use
@@ -63,7 +63,7 @@ The non-tagged `Active Oauth User Interaction` feature, however, has no such acc
 
 ## Deficiencies
   * I have not built any tests for this code.
-  * *I have not propogated command line settings into the Behave process.*  I will get around to this in parallel with tests.
+  * **I have not propogated command line settings into the Behave process.**  I will get around to this in parallel with tests.
   * I operate under Python 3.3.
     - I've used `super()` all over the place, so Python 3.2 and below will not function properly without slight revision (in the time it took to type this, I could have been well on my way).
     - I've imported directly from Unittest in a couple of spots, so earlier versions may not work.
