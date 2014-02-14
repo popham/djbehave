@@ -11,11 +11,11 @@ It provides a `manage.py behave` analogue to Django's `manage.py test` command, 
 setup(
     name="djbehave",
     description="Integration of Behave into Django's command line interface.",
-    version="v%s" % version,
+    version="%s" % version,
     author="Tim Popham",
     author_email="popham@uw.edu",
     url="https://github.com/popham/djbehave",
-    download_url="https://github.com/popham/djbehave/archive/v%s.tar.gz" % version,
+    download_url="https://github.com/popham/djbehave/archive/%s.tar.gz" % version,
     packages=find_packages('.', exclude=()),
     install_requires=[
         'django>=1.4.1',
