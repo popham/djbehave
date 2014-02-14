@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 version = '0.0.1.0'
 
 description = """
-Djbehave exposes`Behave <http://pythonhosted.org/behave/>`_ for use under `Django <https://www.djangoproject.com/>`_.
+Djbehave exposes `Behave <http://pythonhosted.org/behave/>`_ for use under `Django <https://www.djangoproject.com/>`_.
 It provides a `manage.py behave` analogue to Django's `manage.py test` command, maintaining the feel of Django's unittest interface.
 """
 
